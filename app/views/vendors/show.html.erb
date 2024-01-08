@@ -1,8 +1,9 @@
-<h1><%=  @vendor.name%></h1>
-<h3><%= @vendor.description %> </br></h3>
-Contact: <%= @vendor.contact_name %> </br> 
-Phone: <%= @vendor.contact_phone %></br>
-Credit accepted: <%= @vendor.credit_accepted %></br>
+
+<h1><%=  @facade.vendor.name%></h1>
+<h3><%= @facade.vendor.description %> </br></h3>
+Contact: <%= @facade.vendor.contact_name %> </br> 
+Phone: <%= @facade.vendor.contact_phone %></br>
+Credit accepted: <%= @facade.vendor.credit_accepted %></br>
 
 <h3>Search for Markets to add this Vendor</h3>
 <%= form_with url: market_search_vendors_path, method: :get, data: {turbo: false} do |f| %>
@@ -12,12 +13,12 @@ Credit accepted: <%= @vendor.credit_accepted %></br>
 <%= f.text_field :city %>
 <%= f.label :state %>
 <%= f.text_field :state %>
-<%= f.hidden_field :vendor_id, value: @vendor.id %>
+<%= f.hidden_field :vendor_id, value: @facade.vendor.id %>
 <%= f.submit 'Search Markets' %>
 <% end %>
 
-<% if @market_search != nil %>
-  <% @market_search.each do |market| %>
+<% if @facade.market_search != nil %>
+  <% @facade.market_search.each do |market| %>
     <p><%= link_to "#{market.name}", market_path("#{market.id}") %>
     <%= button_to 'Add Market'%></p>
   <% end %>

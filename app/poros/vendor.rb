@@ -2,6 +2,7 @@ class Vendor
   attr_reader :name, :description, :contact_name, :contact_phone, :credit_accepted, :id
 
   def initialize(data)
+    # require 'pry'; binding.pry
     @name = data[:attributes][:name]
     @description = data[:attributes][:description]
     @contact_name = data[:attributes][:contact_name]
